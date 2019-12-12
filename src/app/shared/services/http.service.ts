@@ -9,29 +9,29 @@ import { environment } from '../../../environments/environment';
 })
 export class HttpService {
   apiUrl = environment.apiUrl;
-  userDetails = 'user';
+
   constructor(private http: HttpClient) {
-
   }
 
-  httpHeaders = {
-    headers: new HttpHeaders({
-      'content-type': 'application/json'
-    })
-  };
-
-
-  createData(url, body) {
-    return this.http.post(url, body, this.httpHeaders);
+  /* POST API logic is done by using createData method and it takes  */
+  createData(endPoints, body) {
+    const url = environment.apiUrl + endPoints;
+    return this.http.post(url, body);
   }
 
-  readData(url) {
+  /* GET API logic is done by using createData method and it takes  */
+  readData(endPoints) {
+    const url = `${this.apiUrl}${endPoints}`;
     return this.http.get(url);
   }
+
+
+  /* UPDATE API logic is done by using createData method and it takes  */
   updateData() {
 
   }
 
+  /* Delete API logic is done by using createData method and it takes  */
   delteData() { }
 
 

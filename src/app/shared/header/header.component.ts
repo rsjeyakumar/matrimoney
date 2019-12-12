@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommunicationService } from '../services/communication.service';
 import { Router } from '@angular/router';
-import { User } from '../../models/app.models';
+import { USER } from '../../models/app.models';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import { User } from '../../models/app.models';
 })
 export class HeaderComponent implements OnInit {
   subjectData: object;
-  suserDetails: User;
+  suserDetails: USER;
   showMobileMenu = false;
   constructor(private comser: CommunicationService, private router: Router) { }
 

@@ -1,11 +1,19 @@
 .nav-item .nav-link {
   color: #000;
 }
-/* .nav-item.active .nav-link {
-  border-bottom: 2px solid #f60;
-} */
+
+.nav-item.active .nav-link {
+  color: #f60;
+}
 
 .secoundary-bar a.nav-link {
   color: #fff;
   padding: 0 1rem;
+}
+
+.header-border {
+  border-bottom: 2px solid #f60;
+}
+.navbar-brand span {
+  color: #f60;
 }

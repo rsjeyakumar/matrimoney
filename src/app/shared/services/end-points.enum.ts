@@ -1,3 +1,6 @@
-export enum EndPoints {
-    userDetails = 'user'
+export enum ENDPOINTS {
+    HOSPITALS = 'hospitals',
+    POLICIES = 'policies',
+    LOGIN = 'login',
+    APPROVAL = 'claims'
 }
