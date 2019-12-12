@@ -13,52 +13,14 @@
 input {
   border-radius: 0px;
 }
-.btn-primary {
-  background-color: #f60;
-  border: 1px solid #f60;
-}
-.btn-primary.disabled,
-.btn-primary:disabled {
-  color: #fff;
-  background-color: #ff9100;
-  border-color: #ff9100;
-}
 
-.form-control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #ff7b00;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(255, 123, 0, 0.25);
-}
-.btn-primary:hover,
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show > .btn-primary.dropdown-toggle,
-.btn-primary.focus,
-.btn-primary:focus,
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
-  background-color: #ff7b00;
-  border-color: #f60;
-  box-shadow: 0 0 0 0.2rem rgba(255, 123, 0, 0.25);
-}
 body,
 html {
   height: 100%;
   /* font-family: "PT Sans", sans-serif; */
   /* font-weight: bold; */
 }
-body a {
-  color: #f60;
-}
-.white-font {
-  color: #fff;
-}
-body .fa {
-  color: #f60;
-}
+
 body button .fa {
   color: #fff;
 }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "reuse-template": {
+    "matrimoney": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/reuse-template",
+            "outputPath": "dist/matrimoney",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "reuse-template:build"
+            "browserTarget": "matrimoney:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "reuse-template:build:production"
+              "browserTarget": "matrimoney:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "reuse-template:build"
+            "browserTarget": "matrimoney:build"
           }
         },
         "test": {
@@ -120,16 +120,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "reuse-template:serve"
+            "devServerTarget": "matrimoney:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "reuse-template:serve:production"
+              "devServerTarget": "matrimoney:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "reuse-template"
+  "defaultProject": "matrimoney"
 }
