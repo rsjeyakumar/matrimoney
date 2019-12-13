@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg d-none navbar-light bg-white header-border shadow d-flex">
-    <a class="navbar-brand" href="#"><i class="fa fa-user-md" aria-hidden="true"></i><span> Care Insurance
-            Ltd</span></a>
+    <a class="navbar-brand" href="#"><i class="fa fa-male" aria-hidden="true"></i><i class="fa fa-female"
+            aria-hidden="true"></i><span> Match-Maker
+            Matrimoney</span></a>
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse"
         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -8,32 +9,32 @@
     </button>
     <div class="collapse navbar-collapse" [ngClass]="{'show': showMobileMenu}" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <!-- <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0)" [routerLink]="['']"><i class="fa fa-home"
-                        aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item" *ngIf="suserDetails">
+                <a class="nav-link" href="javascript:void(0)" routerLinkActive="active"
+                    [routerLink]="['/home/suggestedprofile']"> <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                    <!-- <span class="rounded-circle alerts">
+                        <span
+                            class="numberofalerts">2</span>
+                    </span> -->
+                    Available Profile</a>
+            </li>
+            <li class="nav-item" *ngIf="suserDetails">
+                <a class="nav-link" href="javascript:void(0)" routerLinkActive="active"
+                    [routerLink]="['/home/myintrest']"> <i class="fa fa-free-code-camp" aria-hidden="true"></i>My
+                    Intrest</a>
+            </li>
+            <!-- <li class="nav-item" *ngIf="suserDetails">
+                <a class="nav-link" href="javascript:void(0)" routerLinkActive="active" [routerLink]="['/home/matches']"
+                    routerLinkActive="router-link-active"> <i class="fa fa-superpowers" aria-hidden="true"></i><span
+                        class="rounded-circle alerts"><span class="numberofalerts">2</span></span>Matches</a>
             </li> -->
-            <li class="nav-item" [routerLinkActive]="'active'" *ngIf="!suserDetails">
-                <a class="nav-link" href="javascript:void(0)" [routerLink]="['/status-check']"><i class="fa fa-list-ol"
-                        aria-hidden="true"></i>Status Check<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="'active'" *ngIf="!suserDetails">
-                <a class="nav-link" href="javascript:void(0)" [routerLink]="['/request-claim']"><i
-                        class="fa fa-heartbeat" aria-hidden="true"></i>Raise Claim<span
-                        class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item" [routerLinkActive]="'active'" *ngIf="suserDetails">
-                <a class="nav-link" href="javascript:void(0)" [routerLink]="['/claim-list']"><i class="fa fa-history"
-                        aria-hidden="true"></i>Claim List<span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item" *ngIf="suserDetails">
                 <a class="nav-link" href="javascript:void(0)" (click)="op.toggle($event)"> <i
                         class="fa fa-user-circle fa-2" aria-hidden="true"></i>Profile</a>
             </li>
             <li class="nav-item" *ngIf="!suserDetails">
                 <a class="nav-link" href="javascript:void(0)" [routerLink]="['/login']"><i class="fa fa-user-plus"
-                        aria-hidden="true"></i>Approver
-                    Login</a>
+                        aria-hidden="true"></i>Login</a>
             </li>
         </ul>
     </div>

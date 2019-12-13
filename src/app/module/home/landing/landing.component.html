@@ -1,13 +1,116 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
+    <div class="row " *ngIf="this.currentPage == 'suggestedprofile'">
+        <div class="col">
+            <h5 class="text-center my-3">Avilable profiles</h5>
         </div>
     </div>
+    <div class="row " *ngIf="this.currentPage == 'myintrest'">
+        <div class="col">
+            <h5 class="text-center my-3">My interest</h5>
+        </div>
+    </div>
+    <div class="row p-5">
+
+        <div class="col-lg-3 col" *ngFor="let profile of profiles">
+            <div class="card rounded">
+                <span class="card-img-top d-block" [ngStyle]="{background: 'url(' + profile.imageUrl + ')'}"
+                    alt="Card image"></span>
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{profile?.name}}</h4>
+                    <p class="card-text text-center">{{profile?.matrimonyId}}</p>
+                    <p class="card-text">
+                        <span class="text-left">Age:<b>{{profile?.age}}</b></span>
+                    </p>
+                    <p class="card-text">
+                        <span class="text-right">Education:<b
+                                class="text-uppercase">{{profile?.educationDetail}}</b></span>
+                    </p>
+                    <p class="card-text">
+                        <span class="text-right">Place:<b class="text-capitalize">{{profile?.city}}</b></span>
+                    </p>
+                    <!-- <p class="text-center">
+                        <a href="javascript:void(0)" (click)="interested()"><i class="fa fa-heart-o"
+                                aria-hidden="true"></i></a> </p> -->
+                </div>
+
+                <a href="javascript:void(0)" (click)="viewDetailsProfile(profile.userMatrimonyId)"
+                    class="btn btn-primary btn-block">View
+                    Profile</a>
+            </div>
+        </div>
+
+    </div>
 </div>
+<p-toast styleClass="custom-toast" position="top-center"></p-toast>
+<p-dialog appendTo="body" styleClass="dialogmodal" header="View Profile Details" [(visible)]="display" [modal]="true"
+    [responsive]="true" [style]="{minWidth: '600px'}" [minY]="700" [maximizable]="true" [baseZIndex]="10000">
+    <div class="container">
+        <div class="row my-2">
+            <div class="col-lg-8 order-lg-2">
+
+
+                <h5 class="mb-3">User Profile</h5>
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <p><b>Name: </b>{{profileDetail?.profile?.name}}
+                        </p>
+
+                        <p><b>Marital Status: </b>
+                            {{profileDetail?.profile?.maritialStatus}}
+                        </p>
+
+                        <p><b>Date of Birth: </b>
+                            {{profileDetail?.profile?.dob}}
+                        </p>
+
+                        <p><b>Age: </b>
+                            {{profileDetail?.profile?.age}}
+                        </p>
+
+                        <p><b>City: </b>
+                            {{profileDetail?.profile?.city}}
+                        </p>
+
+                        <p><b>Email Address: </b>
+                            {{profileDetail?.profile?.emailAddress}}
+                        </p>
+
+                        <p><b>Education Detail: </b>
+                            {{profileDetail?.profile?.educationDetail}}
+                        </p>
+
+                        <p><b>Occupation Detail: </b>
+                            {{profileDetail?.profile?.occupationDetail}}
+                        </p>
+
+                        <p> <b>Annual Income: </b>
+                            {{profileDetail?.profile?.annualIncome}}
+                        </p>
+                        <p>
+                            <b>About Me: </b>
+                            {{profileDetail?.profile?.aboutMe}}
+                        </p>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" *ngIf="profileDetail?.profile?.status != 'Interested'"
+                            (click)="viewintrested()">show interest</button>
+                        <b *ngIf="profileDetail?.profile?.status == 'Interested'" class="text-success">interest
+                            Sent </b>
+                    </div>
+
+                </div>
+                <!--/row-->
+
+
+
+
+            </div>
+            <div class="col-lg-4 order-lg-1 text-center">
+                <img [src]="profileDetail?.profile?.imageUrl" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+
+            </div>
+        </div>
+    </div>
+</p-dialog>

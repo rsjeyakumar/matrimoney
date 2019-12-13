@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { HttpService } from '../../shared/services/http.service';
+import { ENDPOINTS } from '../../shared/services/end-points.enum';
 import { CommunicationService } from '../../shared/services/communication.service';
+import { USER, LOGINREQUEST, REGISTERRESPONSE } from '../../models/app.models';
+import { DatePipe } from '@angular/common';
+import Utils from '../../shared/services/utils';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [DatePipe]
 })
 export class LoginComponent implements OnInit {
   toggleLoginReg = true;
@@ -17,7 +24,12 @@ export class LoginComponent implements OnInit {
   loginvalidation = false;
   loginSpin: boolean;
   registerSpin: boolean;
-  constructor(private http: HttpService, private router: Router, private passdata: CommunicationService) { }
+  genter = ['male', 'female'];
+  city = ['bangalore', 'hyderabad', 'chennai'];
+  maritalStatus = ['married', 'single', 'divorced'];
+  phonePattern: RegExp = /^[7-9][0-9]{9}$/;
+  regResponse: REGISTERRESPONSE;
+  constructor(private http: HttpService, private router: Router, private passdata: CommunicationService, private datePipe: DatePipe) { }
 
   ngOnInit() {
     /* Loginform creation */
@@ -28,14 +40,23 @@ export class LoginComponent implements OnInit {
 
     /* registration form creation */
     this.registerForm = new FormGroup({
-      username: new FormControl(null, [Validators.required]),
+      name: new FormControl(null, [Validators.required]),
+      genter: new FormControl(null, [Validators.required]),
+      maritialStatus: new FormControl(null, [Validators.required]),
+      emailAddress: new FormControl(null, [Validators.required, Validators.email]),
+      dob: new FormControl(null, [Validators.required, Utils.validatedob]),
+      phoneNumber: new FormControl(null, [Validators.required, Validators.pattern(this.phonePattern)]),
+      city: new FormControl(null, [Validators.required]),
+      educationDetails: new FormControl(null, [Validators.required]),
+      annualIncome: new FormControl(null, [Validators.required]),
+      aboutMe: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
-      emailid: new FormControl(null, [Validators.required, Validators.email])
+      imageUrl: new FormControl(null, [Validators.required])
     });
     const usesession = sessionStorage.getItem('user');
     if (usesession) {
 
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home/suggestedprofile']);
     } else {
       this.router.navigate(['']);
     }
@@ -49,21 +70,25 @@ export class LoginComponent implements OnInit {
 
   /* Login api submit */
   loginSubmit() {
-    const queryparams = '?username=' + this.loginForm.value.username + '&password=' + this.loginForm.value.password;
-    const apiEndpointUrl = this.http.apiUrl + this.http.userDetails + queryparams;
+    const queryparams: LOGINREQUEST = {
+      phoneNumber: this.loginForm.value.username,
+      password: this.loginForm.value.password
+    };
+
+    const apiEndpointUrl = ENDPOINTS.LOGIN;
     this.loginSpin = true;
-    this.http.readData(apiEndpointUrl).subscribe(
-      (res: object[]) => {
+    this.http.createData(apiEndpointUrl, queryparams).subscribe(
+      (res: USER) => {
         this.loginSpin = false;
-        if (res.length === 1) {
+        if (res.statusCode === 200) {
           const data = {
             userDetails: true
           };
           sessionStorage.clear();
           this.loginvalidation = false;
-          sessionStorage.setItem('user', JSON.stringify(res[0]));
+          sessionStorage.setItem('user', JSON.stringify(res));
           this.passdata.sendMessage(data);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/suggestedprofile']);
         } else {
           sessionStorage.clear();
           this.loginvalidation = true;
@@ -74,12 +99,26 @@ export class LoginComponent implements OnInit {
 
   /* Register api submit */
   registerFormSubmit() {
+    const registerform = {
+      name: this.registerForm.value.name,
+      gender: this.registerForm.value.genter,
+      maritialStatus: this.registerForm.value.maritialStatus,
+      emailAddress: this.registerForm.value.emailAddress,
+      dob: this.datePipe.transform(this.registerForm.value.dob, 'yyyy-MM-dd'),
+      phoneNumber: this.registerForm.value.phoneNumber,
+      password: this.registerForm.value.password,
+      city: this.registerForm.value.city,
+      educationDetail: this.registerForm.value.educationDetails,
+      annualIncome: Number(this.registerForm.value.annualIncome),
+      aboutMe: this.registerForm.value.aboutMe,
+      imageUrl: this.registerForm.value.imageUrl
+    };
     this.registerSpin = true;
-    const apiEndpointUrl = this.http.apiUrl + this.http.userDetails;
-    this.http.createData(apiEndpointUrl, this.registerForm.value).subscribe(
-      (res) => {
+    const apiEndpointUrl = ENDPOINTS.REGISTRATION;
+    this.http.createData(apiEndpointUrl, registerform).subscribe(
+      (res: REGISTERRESPONSE) => {
         this.registerSpin = false;
-        console.log(res);
+        this.regResponse = res;
       }
     );
   }

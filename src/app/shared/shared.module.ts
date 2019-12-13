@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CalendarModule } from 'primeng/calendar';
 import { StepsModule } from 'primeng/steps';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
 
 
 import { HeaderComponent } from './header/header.component';
@@ -17,9 +18,12 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
   imports: [
-    CommonModule, ReactiveFormsModule, HttpClientModule, OverlayPanelModule, CalendarModule, RouterModule, StepsModule, DialogModule
+    CommonModule, ReactiveFormsModule, HttpClientModule,
+    OverlayPanelModule, CalendarModule, RouterModule, StepsModule,
+    DialogModule, ToastModule
   ],
   providers: [HttpService],
-  exports: [HeaderComponent, FooterComponent, ReactiveFormsModule, CalendarModule, RouterModule, StepsModule, DialogModule]
+  exports: [HeaderComponent, FooterComponent, ReactiveFormsModule,
+    CalendarModule, RouterModule, StepsModule, DialogModule, ToastModule]
 })
 export class SharedModule { }

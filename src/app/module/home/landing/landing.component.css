@@ -1,0 +1,7 @@
+.card-img-top {
+  background-color: #cccccc;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain !important;
+}

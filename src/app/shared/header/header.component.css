@@ -3,7 +3,7 @@
 }
 
 .nav-item.active .nav-link {
-  color: #f60;
+  color: #28a745;
 }
 
 .secoundary-bar a.nav-link {
@@ -12,8 +12,8 @@
 }
 
 .header-border {
-  border-bottom: 2px solid #f60;
+  border-bottom: 2px solid #28a745;
 }
 .navbar-brand span {
-  color: #f60;
+  color: #28a745;
 }

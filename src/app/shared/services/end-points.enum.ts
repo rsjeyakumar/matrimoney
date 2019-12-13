@@ -1,6 +1,7 @@
 export enum ENDPOINTS {
-    HOSPITALS = 'hospitals',
-    POLICIES = 'policies',
     LOGIN = 'login',
-    APPROVAL = 'claims'
+    USERS = 'users',
+    REGISTRATION = 'users/registrations',
+    INTEREST = 'interests'
+
 }

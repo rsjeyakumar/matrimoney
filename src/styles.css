@@ -7,7 +7,7 @@
   margin-bottom: auto;
 }
 .ing-orange-bg {
-  background-color: #f60;
+  background-color: #28a745;
 }
 .btn,
 input {
@@ -24,9 +24,10 @@ html {
 body button .fa {
   color: #fff;
 }
+
 .alerts {
-  border: 2px solid #f60;
-  background: #f60;
+  border: 2px solid #28a745;
+  background: #28a745;
   color: #fff;
   width: 15px;
   display: inline-block;
@@ -39,4 +40,19 @@ body button .fa {
   bottom: 8px;
   font-weight: bold;
   left: 2px;
+}
+
+select.form-control option {
+  text-transform: capitalize;
+}
+body .fa {
+  color: #007bff;
+  font-weight: bold;
+}
+
+body .fa.fa-heart-o {
+  color: #dc3545;
+}
+.dialogmodal .ui-dialog-mask {
+  top: 0 !important;
 }

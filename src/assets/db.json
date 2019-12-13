@@ -1,10 +1,11 @@
 {
   "user": [
     {
-      "username": "jeyakumar",
-      "password": "jeyakumar",
-      "emailid": "jeyakumar@gmail.com",
-      "id": 1
+      "userId": "jeyakumar",
+      "userName": "jeyakumar",
+      "status": "jeyakumar@gmail.com",
+      "message": "User login successfully",
+      "statusCode": 200
     },
     {
       "username": "testname",
