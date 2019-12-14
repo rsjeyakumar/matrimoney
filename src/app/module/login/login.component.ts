@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
   registerSpin: boolean;
   genter = ['male', 'female'];
   city = ['bangalore', 'hyderabad', 'chennai'];
-  maritalStatus = ['married', 'single', 'divorced'];
+  maritalStatus = ['single', 'divorced'];
+  foodhabit = ['Veg', 'Non-Veg'];
   phonePattern: RegExp = /^[7-9][0-9]{9}$/;
   regResponse: REGISTERRESPONSE;
   constructor(private http: HttpService, private router: Router, private passdata: CommunicationService, private datePipe: DatePipe) { }
@@ -51,11 +52,16 @@ export class LoginComponent implements OnInit {
       annualIncome: new FormControl(null, [Validators.required]),
       aboutMe: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
-      imageUrl: new FormControl(null, [Validators.required])
+      imageUrl: new FormControl(null, [Validators.required]),
+      foodHabit: new FormControl(null, [Validators.required]),
+      occupationDetail: new FormControl(null, [Validators.required]),
+      partnerFood: new FormControl(null),
+      partnerOccupation: new FormControl(null),
+      partnerEducation: new FormControl(null),
+      partnerCity: new FormControl(null),
     });
     const usesession = sessionStorage.getItem('user');
     if (usesession) {
-
       this.router.navigate(['/home/suggestedprofile']);
     } else {
       this.router.navigate(['']);
@@ -111,7 +117,13 @@ export class LoginComponent implements OnInit {
       educationDetail: this.registerForm.value.educationDetails,
       annualIncome: Number(this.registerForm.value.annualIncome),
       aboutMe: this.registerForm.value.aboutMe,
-      imageUrl: this.registerForm.value.imageUrl
+      imageUrl: this.registerForm.value.imageUrl,
+      occupationDetail: this.registerForm.value.imageUrl,
+      foodHabit: this.registerForm.value.foodHabit,
+      partnerFood: this.registerForm.value.partnerFood,
+      partnerOccupation: this.registerForm.value.partnerOccupation,
+      partnerEducation: this.registerForm.value.partnerEducation,
+      partnerCity: this.registerForm.value.partnerCity,
     };
     this.registerSpin = true;
     const apiEndpointUrl = ENDPOINTS.REGISTRATION;

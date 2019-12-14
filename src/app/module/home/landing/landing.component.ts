@@ -35,7 +35,7 @@ export class LandingComponent implements OnInit {
         if (res.key === 'myintrest') {
           this.myinterests();
         } else if (res.key === 'matches') {
-
+          this.matches();
         } else {
           this.profiledashboard();
         }
@@ -46,6 +46,20 @@ export class LandingComponent implements OnInit {
   profiledashboard() {
     this.profiles = [];
     const endpoint = `${ENDPOINTS.USERS}/${this.loginId}/dashboard`;
+    this.http.readData(endpoint).subscribe(
+      (res: PROFILEDASBOARDRESPONSE) => {
+        if (res.statusCode === 200) {
+          this.profiles = res.profiles;
+        } else if (res.statusCode === 404) {
+
+        }
+
+      }
+    );
+  }
+  matches() {
+    this.profiles = [];
+    const endpoint = `${this.loginId}/preferredprofiles`;
     this.http.readData(endpoint).subscribe(
       (res: PROFILEDASBOARDRESPONSE) => {
         if (res.statusCode === 200) {

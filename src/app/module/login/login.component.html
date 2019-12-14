@@ -107,7 +107,7 @@
                                             <label for="validationCustom03">User Id<b class="text-danger">*</b></label>
                                             <input formControlName="phoneNumber" type="text"
                                                 [ngClass]="{'is-invalid': registerForm?.controls?.phoneNumber?.touched && registerForm?.controls?.phoneNumber?.invalid}"
-                                                class="form-control" id="validationCustom03" placeholder="9876543210"
+                                                class="form-control" id="validationCustom03" placeholder="PhoneNumber"
                                                 required>
                                             <div class="invalid-feedback">
                                                 <span *ngIf="registerForm?.controls?.phoneNumber?.errors">Please
@@ -157,6 +157,7 @@
                                                 <option value="BE">B.E</option>
                                                 <option value="BCOM">B.Com</option>
                                                 <option value="MBBS">MBBS</option>
+                                                <option value="Cricketer">CRICKETER</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 <span
@@ -214,12 +215,85 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group">
+                                        <div class="form-group col-md-12 mb-3">
+                                            <label for="password">Occupation</label>
+                                            <select formControlName="occupationDetail" id="inputState"
+                                                [ngClass]="{'is-invalid': registerForm?.controls?.occupationDetail?.touched && registerForm?.controls?.occupationDetail?.invalid}"
+                                                class="form-control">
+                                                <option value="Software">Software</option>
+                                                <option value="Lawyer">Lawyer</option>
+                                                <option value="Teacher">Teacher</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <span
+                                                    *ngIf="registerForm?.controls?.occupationDetail?.errors?.required">Please
+                                                    select your Occupation.</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 mb-3">
                                             <label for="password">Password</label>
                                             <input type="password" name="" class="form-control"
                                                 formControlName="password" id="">
                                         </div>
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="password">Food Habit</label>
+                                            <select formControlName="foodHabit" id="inputState"
+                                                [ngClass]="{'is-invalid': registerForm?.controls?.foodHabit?.touched && registerForm?.controls?.foodHabit?.invalid}"
+                                                class="form-control">
+                                                <option [value]="item" *ngFor="let item of foodhabit">{{item}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <span *ngIf="registerForm?.controls?.foodHabit?.errors?.required">Please
+                                                    select correct Food habit..</span></div>
+                                        </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4>Partner Preference</h4>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 mb-3">
+                                                    <label for="password">Food Habit</label>
+                                                    <select formControlName="partnerFood" id="inputState"
+                                                        class="form-control">
+                                                        <option [value]="item" *ngFor="let item of foodhabit">{{item}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6 mb-3">
+                                                    <label for="password">City</label>
+                                                    <select formControlName="partnerCity" id="inputState"
+                                                        class="form-control">
+                                                        <option [value]="item" *ngFor="let item of city">{{item}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 mb-3">
+                                                    <label for="password">Education</label>
+                                                    <select formControlName="partnerEducation" id="inputState"
+                                                        class="form-control">
+                                                        <option value="BE">B.E</option>
+                                                        <option value="BCOM">B.Com</option>
+                                                        <option value="MBBS">MBBS</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6 mb-3">
+                                                    <label for="password">Occupation</label>
+                                                    <select formControlName="partnerOccupation" id="inputState"
+                                                        class="form-control">
+                                                        <option value="Software">Software</option>
+                                                        <option value="Lawyer">Lawyer</option>
+                                                        <option value="Teacher">Teacher</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <button class="btn btn-primary btn-block" type="submit"
@@ -235,6 +309,9 @@
                                                 <b><a href="javascript:void(0)" (click)="toggleForm()">Sign
                                                         in</a></b></i></p>
                                     </div>
+
+
+
                                 </form>
                             </div>
                         </div>

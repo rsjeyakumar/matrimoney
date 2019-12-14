@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedModule } from '../../../shared/shared.module';
+import { ActivatedRoute } from '@angular/router';
 import { LandingComponent } from './landing.component';
 
-describe('LandingComponent', () => {
+fdescribe('LandingComponent', () => {
   let component: LandingComponent;
   let fixture: ComponentFixture<LandingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingComponent ]
+      declarations: [LandingComponent],
+      imports: [SharedModule],
+      providers: [ActivatedRoute]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

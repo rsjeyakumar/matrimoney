@@ -13,8 +13,10 @@
 
         <div class="col-lg-3 col" *ngFor="let profile of profiles">
             <div class="card rounded">
-                <span class="card-img-top d-block" [ngStyle]="{background: 'url(' + profile.imageUrl + ')'}"
-                    alt="Card image"></span>
+                <p class="m-0">
+                    <span class="card-img-top" [ngStyle]="{background: 'url(' + profile.imageUrl + ')'}"
+                        alt="Card image"></span>
+                </p>
                 <div class="card-body">
                     <h4 class="card-title text-center">{{profile?.name}}</h4>
                     <p class="card-text text-center">{{profile?.matrimonyId}}</p>
@@ -47,12 +49,9 @@
     <div class="container">
         <div class="row my-2">
             <div class="col-lg-8 order-lg-2">
-
-
                 <h5 class="mb-3">User Profile</h5>
                 <div class="row">
                     <div class="col-md-12">
-
 
                         <p><b>Name: </b>{{profileDetail?.profile?.name}}
                         </p>
